@@ -1,4 +1,43 @@
 #!/bin/bash
+# ============================================================
+# Docker Host Connectivity Test (Linux)
+# ============================================================
+#
+# Prerequisites:
+#   1. Docker Engine installed and running
+#      - Install: https://docs.docker.com/engine/install/
+#      - Verify: docker info
+#      - If permission denied: sudo usermod -aG docker $USER
+#        then log out and back in
+#   2. Docker Compose V2 plugin installed
+#      - Install: sudo apt install docker-compose-plugin (Ubuntu/Debian)
+#      - Verify: docker compose version
+#   3. Python 3 installed
+#      - Install: sudo apt install python3 (Ubuntu/Debian)
+#              or sudo dnf install python3 (Fedora/RHEL)
+#      - Verify: python3 --version
+#   4. curl installed
+#      - Install: sudo apt install curl
+#      - Verify: curl --version
+#   5. Port 8000 must be available
+#      - Check: ss -tlnp | grep :8000
+#   6. host.docker.internal is NOT automatic on Linux
+#      - This script uses --add-host=host.docker.internal:host-gateway
+#      - Requires Docker Engine 20.10+ for host-gateway support
+#      - Verify: docker --version (must be >= 20.10)
+#   7. Firewall may need to allow Docker subnet
+#      - If tests fail, try:
+#        sudo iptables -A INPUT -i docker0 -p tcp --dport 8000 -j ACCEPT
+#      - Or with firewalld:
+#        sudo firewall-cmd --zone=docker --add-port=8000/tcp
+#   8. If using --network=host (Test 4), the HTTP server binds
+#      to 0.0.0.0 or 127.0.0.1 — both are reachable in host mode
+#
+# Usage:
+#   cd docker-host-test
+#   bash test-docker-host-linux.sh
+#
+# ============================================================
 set -e
 
 echo "=== Docker Host Connectivity Test (Linux) ==="

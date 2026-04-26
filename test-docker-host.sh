@@ -1,7 +1,29 @@
 #!/bin/bash
+# ============================================================
+# Docker Host Connectivity Test (macOS)
+# ============================================================
+#
+# Prerequisites:
+#   1. Docker Desktop for Mac installed and running
+#      - Download: https://docs.docker.com/desktop/install/mac-install/
+#      - Verify: docker info
+#   2. Python 3 installed (macOS 12+ built-in or via Homebrew)
+#      - Verify: python3 --version
+#      - Install: brew install python3
+#   3. curl installed (macOS built-in)
+#   4. Port 8000 must be available
+#      - Check: lsof -i :8000
+#   5. Docker Desktop automatically provides host.docker.internal
+#      - No extra configuration needed on macOS
+#
+# Usage:
+#   cd docker-host-test
+#   bash test-docker-host.sh
+#
+# ============================================================
 set -e
 
-echo "=== Docker Host Connectivity Test ==="
+echo "=== Docker Host Connectivity Test (macOS) ==="
 echo ""
 
 # Step 1: Check Docker is running

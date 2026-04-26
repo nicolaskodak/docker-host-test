@@ -1,5 +1,31 @@
+### ============================================================
 ### Docker Host Connectivity Test (Windows / PowerShell)
-### Run: powershell -ExecutionPolicy Bypass -File test-docker-host-windows.ps1
+### ============================================================
+###
+### Prerequisites:
+###   1. Docker Desktop for Windows installed and running
+###      - Download: https://docs.docker.com/desktop/install/windows-install/
+###      - WSL 2 backend recommended (Docker Desktop settings)
+###      - Must be running (check system tray icon)
+###      - Verify: docker info
+###   2. Python 3 installed and added to PATH
+###      - Download: https://www.python.org/downloads/
+###      - During install, check "Add Python to PATH"
+###      - Verify: python --version
+###   3. PowerShell 5.1+ (built-in on Windows 10/11)
+###      - Verify: $PSVersionTable.PSVersion
+###   4. Port 8000 must be available
+###      - Check: netstat -an | findstr :8000
+###   5. Docker Desktop automatically provides host.docker.internal
+###      - No extra configuration needed on Windows
+###   6. Windows Firewall may prompt to allow Python
+###      - Click "Allow" when prompted on first run
+###      - Or manually: Windows Defender Firewall > Allow an app > python.exe
+###
+### Usage:
+###   powershell -ExecutionPolicy Bypass -File test-docker-host-windows.ps1
+###
+### ============================================================
 
 $ErrorActionPreference = "Stop"
 
