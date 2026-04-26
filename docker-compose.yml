@@ -1,0 +1,6 @@
+services:
+  test:
+    image: curlimages/curl:latest
+    command: ["-s", "http://host.docker.internal:8000"]
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
